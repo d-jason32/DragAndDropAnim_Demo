@@ -58,13 +58,11 @@ import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material3.Button
 
 
-//private val rotation = FloatPropKey()
-
-
 // Drag and drop composable
 @Composable
 fun DragAndDropBoxes(modifier: Modifier = Modifier) {
     var isPlaying by remember { mutableStateOf(true) }
+    var position by remember { mutableStateOf(IntOffset(300, 300)) }
     Column(modifier = Modifier.fillMaxSize()) {
 
         Row(
@@ -94,6 +92,11 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
                                 object : DragAndDropTarget {
                                     override fun onDrop(event: DragAndDropEvent): Boolean {
                                         isPlaying = !isPlaying
+                                        position = if (isPlaying) {
+                                            IntOffset(300, 300)
+                                        } else {
+                                            IntOffset(130, 100)
+                                        }
                                         dragBoxIndex = index
                                         return true
                                     }
@@ -132,13 +135,8 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
             }
         }
 
-
         val pOffset by animateIntOffsetAsState(
-            targetValue = when (isPlaying) {
-                // Add vertical and horizontal movement
-                true -> IntOffset(300, 300)
-                false -> IntOffset(130, 100)
-            },
+            targetValue = position,
             animationSpec = tween(3000, easing = LinearEasing)
         )
 
@@ -166,15 +164,17 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
                     .size(100.dp)
             )
 
-            MyButton()
+            MyButton {
+                position = IntOffset(400, 100)
+            }
         }
     }
 }
 
 @Composable
-fun MyButton() {
+fun MyButton(onReset: () -> Unit) {
     Button(
-        onClick = { /* TODO */ },
+        onClick = onReset,
         modifier = Modifier.padding(16.dp)
     ) {
         Text("Reset object")
