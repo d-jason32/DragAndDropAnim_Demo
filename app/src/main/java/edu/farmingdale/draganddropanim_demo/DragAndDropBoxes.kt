@@ -54,6 +54,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ViewAgenda
+import androidx.compose.material.icons.filled.CameraAlt
 
 
 //private val rotation = FloatPropKey()
@@ -105,12 +106,9 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
                         enter = scaleIn() + fadeIn(),
                         exit = scaleOut() + fadeOut()
                     ) {
-                        Text(
-                            text = "Right",
-                            fontSize = 40.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.Bold,
-
+                        Icon(
+                            imageVector = Icons.Default.CameraAlt,
+                            contentDescription = "Camera",
                             modifier = Modifier
                                 .fillMaxSize()
                                 .dragAndDropSource {
