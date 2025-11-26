@@ -27,12 +27,8 @@ class MainActivity : ComponentActivity() {
 
 
 
-
-// ToDo x: Make this works in landscape mode only
 // ToDo x: Rotate the rect around itself
-// ToDo x: Move - translate the rect horizontally and vertically
 // ToDo 8: Add a button to reset the rect to the center of the screen
 // ToDo 9: Enable certain animation based on the drop event (like up or down)
-// ToDo 10: Make sure to commit for each one of the above and submit this individually
 
 

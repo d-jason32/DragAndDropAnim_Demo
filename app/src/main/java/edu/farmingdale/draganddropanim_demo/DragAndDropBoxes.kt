@@ -55,6 +55,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ViewAgenda
 import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material3.Button
 
 
 //private val rotation = FloatPropKey()
@@ -134,7 +135,8 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
 
         val pOffset by animateIntOffsetAsState(
             targetValue = when (isPlaying) {
-                true -> IntOffset(130, 300)
+                // Add vertical and horizontal movement
+                true -> IntOffset(300, 300)
                 false -> IntOffset(130, 100)
             },
             animationSpec = tween(3000, easing = LinearEasing)
@@ -163,7 +165,18 @@ fun DragAndDropBoxes(modifier: Modifier = Modifier) {
                     .rotate(rtatView)
                     .size(100.dp)
             )
+
+            MyButton()
         }
     }
 }
 
+@Composable
+fun MyButton() {
+    Button(
+        onClick = { /* TODO */ },
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Text("Reset object")
+    }
+}
