@@ -27,8 +27,4 @@ class MainActivity : ComponentActivity() {
 
 
 
-// ToDo x: Rotate the rect around itself
-// ToDo 8: Add a button to reset the rect to the center of the screen
-// ToDo 9: Enable certain animation based on the drop event (like up or down)
-
 
